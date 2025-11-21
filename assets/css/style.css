@@ -1,0 +1,509 @@
+/* --- 1. CONFIGURACIÓN GENERAL Y VARIABLES --- */
+:root {
+    --olive-dark: #2c3e28;
+    /* Verde profundo */
+    --olive-light: #6b7e60;
+    /* Verde hoja */
+    --gold: #cfa657;
+    /* Dorado aceite */
+    --cream: #fcfbf8;
+    /* Fondo papel */
+    --text: #333333;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(44, 62, 40, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+.brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--olive-dark);
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+    color: inherit;
+}
+
+/* Utilidades */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    background: var(--olive-dark);
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    border: 1px solid var(--olive-dark);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--olive-dark);
+}
+
+.btn-outline:hover {
+    background: var(--olive-dark);
+    color: var(--white);
+}
+
+.btn-sm {
+    padding: 10px 20px;
+    font-size: 0.7rem;
+}
+
+.btn-xs {
+    padding: 8px 15px;
+    font-size: 0.7rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.border-white {
+    border-color: var(--white);
+}
+
+.border-ccc {
+    border-color: #ccc;
+}
+
+/* --- 2. NAVEGACIÓN --- */
+nav {
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    background: rgba(252, 251, 248, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- 3. HERO SECTION --- */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://placehold.co/1920x1080/2c3e28/ffffff?text=Imagen+de+Fondo+Hero+(Pendiente)');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Efecto Parallax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* --- 4. HISTORIA --- */
+.story {
+    padding: 5rem 0;
+    text-align: center;
+    background: var(--white);
+}
+
+.story p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--olive-light);
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 2rem auto;
+}
+
+/* --- 5. TIENDA (PRODUCTOS) --- */
+.shop {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.product-card {
+    background: var(--white);
+    padding: 2rem;
+    border: 1px solid transparent;
+    transition: 0.4s;
+    position: relative;
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+    border-color: rgba(207, 166, 87, 0.3);
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gold);
+    color: white;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    background-color: #f0f0f0;
+}
+
+.price {
+    display: block;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: var(--olive-dark);
+    font-weight: 700;
+}
+
+.meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+/* --- 6. CONTACTO --- */
+.contact {
+    padding: 5rem 0;
+    background: var(--olive-dark);
+    color: var(--white);
+}
+
+.contact h2 {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-box {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- 7. FOOTER & LEGAL --- */
+footer {
+    background: #1a2618;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 3rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-links {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    cursor: pointer;
+}
+
+.footer-links span:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+/* --- 8. COMPONENTES EXTRA (MODALES & COOKIES) --- */
+
+/* Banner Cookies */
+#cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--gold);
+    z-index: 2000;
+    max-width: 600px;
+    margin: 0 auto;
+    /* Centrado en móvil */
+}
+
+.cookie-text {
+    font-size: 0.9rem;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* --- 9. NOTIFICACIONES (TOAST) --- */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: var(--white);
+    color: var(--text);
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--olive-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(120%);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    min-width: 300px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    border-left-color: var(--olive-light);
+}
+
+.toast.info {
+    border-left-color: var(--gold);
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+}
+
+.toast-message {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Modales (Dialog) */
+dialog {
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-width: 550px;
+    width: 90%;
+    background: var(--white);
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+dialog[open] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+dialog::backdrop {
+    background: rgba(44, 62, 40, 0.4);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+dialog[open]::backdrop {
+    opacity: 1;
+}
+
+/* Animación de salida (requiere soporte JS para esperar) */
+dialog.closing {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+
+dialog.closing::backdrop {
+    opacity: 0;
+}
+
+.modal-content {
+    padding: 2.5rem;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--olive-dark);
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+    line-height: 1;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-modal:hover {
+    color: var(--olive-dark);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modal-divider {
+    margin: 0 0 1.5rem 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    /* Menú simplificado */
+    .brand {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    #cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
