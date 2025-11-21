@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OleoPuro | Esencia Mediterránea</title>
+    <meta name="description" content="Aceite de Oliva Virgen Extra Premium. Venta directa de la almazara a tu mesa.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. CONFIGURACIÓN GENERAL Y VARIABLES --- */
+        :root {
+            --olive-dark: #2c3e28;    /* Verde profundo */
+            --olive-light: #6b7e60;   /* Verde hoja */
+            --gold: #cfa657;          /* Dorado aceite */
+            --cream: #fcfbf8;         /* Fondo papel */
+            --text: #333333;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(44, 62, 40, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; color: var(--olive-dark); }
+        a { text-decoration: none; transition: 0.3s; color: inherit; }
+        
+        /* Utilidades */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--olive-dark);
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            border: 1px solid var(--olive-dark);
+            cursor: pointer;
+        }
+        .btn:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+        .btn-outline { background: transparent; color: var(--olive-dark); }
+        .btn-outline:hover { background: var(--olive-dark); color: var(--white); }
+
+        /* --- 2. NAVEGACIÓN --- */
+        nav {
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(252, 251, 248, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
+        .nav-menu { display: flex; gap: 2.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1474979266404-7cadd259c308?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto Parallax */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--white); }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.9; font-weight: 300; }
+
+        /* --- 4. HISTORIA --- */
+        .story { padding: 5rem 0; text-align: center; background: var(--white); }
+        .story p { max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--olive-light); }
+        .divider { width: 60px; height: 2px; background: var(--gold); margin: 2rem auto; }
+
+        /* --- 5. TIENDA (PRODUCTOS) --- */
+        .shop { padding: 5rem 0; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; font-style: italic; }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        .product-card {
+            background: var(--white);
+            padding: 2rem;
+            border: 1px solid transparent;
+            transition: 0.4s;
+            position: relative;
+        }
+        .product-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+            border-color: rgba(207, 166, 87, 0.3);
+        }
+        .tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gold);
+            color: white;
+            font-size: 0.7rem;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            background-color: #f0f0f0;
+        }
+        .price { display: block; font-size: 1.5rem; margin: 1rem 0; color: var(--olive-dark); font-weight: 700; }
+        .meta { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; display: block; }
+
+        /* --- 6. CONTACTO --- */
+        .contact { padding: 5rem 0; background: var(--olive-dark); color: var(--white); }
+        .contact h2 { color: var(--white); text-align: center; margin-bottom: 2rem; }
+        .form-box { max-width: 600px; margin: 0 auto; }
+        .input-group { margin-bottom: 1.5rem; }
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-family: inherit;
+        }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.6); }
+        input:focus, textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.15); }
+
+        /* --- 7. FOOTER & LEGAL --- */
+        footer { background: #1a2618; color: rgba(255,255,255,0.5); padding: 3rem 0; font-size: 0.9rem; text-align: center; }
+        .footer-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem; cursor: pointer; }
+        .footer-links span:hover { color: var(--gold); text-decoration: underline; }
+
+        /* --- 8. COMPONENTES EXTRA (MODALES & COOKIES) --- */
+        
+        /* Banner Cookies */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--gold);
+            z-index: 2000;
+            max-width: 600px;
+            margin: 0 auto; /* Centrado en móvil */
+        }
+        
+        /* Modales (Dialog) */
+        dialog {
+            margin: auto;
+            padding: 0;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 90%;
+        }
+        dialog::backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); }
+        .modal-content { padding: 3rem; overflow-y: auto; max-height: 80vh; }
+        .close-modal { float: right; cursor: pointer; font-size: 1.5rem; border: none; background: none; }
+
+        /* Móvil */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Menú simplificado */
+            .brand { flex-grow: 1; text-align: center; }
+            .hero-content h1 { font-size: 2.2rem; }
+            #cookie-banner { flex-direction: column; text-align: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="brand">OLEOPURO</a>
+            <ul class="nav-menu">
+                <li><a href="#historia">Origen</a></li>
+                <li><a href="#tienda">Colección</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#tienda" class="btn" style="padding: 10px 20px; font-size: 0.7rem;">Comprar</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Oro Líquido</h1>
+            <p>Cosecha Temprana 2024. Sin intermediarios.</p>
+            <a href="#tienda" class="btn">Descubrir Sabores</a>
+        </div>
+    </header>
+
+    <section id="historia" class="story">
+        <div class="container">
+            <h2>Raíces Centenarias</h2>
+            <div class="divider"></div>
+            <p>
+                Nuestro aceite no se fabrica, nace. En las laderas de Jaén, nuestros olivos centenarios 
+                producen una aceituna picual de intensidad única. Recolectamos a mano y prensamos 
+                en frío menos de 24 horas después de la cosecha para mantener los polifenoles intactos.
+            </p>
+        </div>
+    </section>
+
+    <section id="tienda" class="shop">
+        <div class="container">
+            <h2 class="section-title">Edición Limitada</h2>
+            
+            <div class="product-grid">
+                <article class="product-card">
+                    <span class="tag">Más Vendido</span>
+                    <img src="https://images.unsplash.com/photo-1615486511262-c7b5c7f42964?q=80&w=1974&auto=format&fit=crop" alt="Botella Aceite" class="product-img">
+                    <h3>Reserva Familiar 500ml</h3>
+                    <span class="meta">Variedad Picual | Acidez 0.1º</span>
+                    <p>Notas intensas de tomate, higuera y hierba recién cortada.</p>
+                    <span class="price">18.50 €</span>
+                    <button class="btn w-100" onclick="simularCompra('Reserva Familiar')">Añadir a la Cesta</button>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1474979266404-7cadd259c308?q=80&w=2070&auto=format&fit=crop" alt="Aceite en Rama" class="product-img">
+                    <h3>En Rama (Sin Filtrar)</h3>
+                    <span class="meta">Edición Octubre | Pura Textura</span>
+                    <p>Aceite turbio, con toda la pulpa y sabor de la aceituna fresca.</p>
+                    <span class="price">21.00 €</span>
+                    <button class="btn w-100" onclick="simularCompra('Edición En Rama')">Añadir a la Cesta</button>
+                </article>
+
+                 <article class="product-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1664648183902-a173e6d9c2c8?q=80&w=1974&auto=format&fit=crop" alt="Caja Degustación" class="product-img">
+                    <h3>Pack Degustación 3L</h3>
+                    <span class="meta">3 Latas x 1L | Conservación Óptima</span>
+                    <p>Ideal para regalar o para familias que valoran la salud diaria.</p>
+                    <span class="price">45.00 €</span>
+                    <button class="btn w-100" onclick="simularCompra('Pack Degustación')">Añadir a la Cesta</button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2>¿Tienes dudas o eres un restaurante?</h2>
+            <div class="form-box">
+                <form onsubmit="event.preventDefault(); alert('Mensaje enviado (Simulación). Te responderemos pronto.');">
+                    <div class="input-group">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline" style="border-color:white; color:white; width:100%;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OleoPuro S.L. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <span onclick="abrirModal('modal-aviso')">Aviso Legal</span>
+                <span onclick="abrirModal('modal-privacidad')">Política de Privacidad</span>
+                <span onclick="abrirModal('modal-envios')">Envíos</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookie-banner">
+        <p style="font-size: 0.9rem;">Usamos cookies propias y de terceros para mejorar tu experiencia de compra. ¿Aceptas?</p>
+        <div style="display:flex; gap:10px;">
+            <button class="btn" style="padding: 8px 15px; font-size: 0.7rem;" onclick="document.getElementById('cookie-banner').style.display='none'">Aceptar</button>
+            <button class="btn btn-outline" style="padding: 8px 15px; font-size: 0.7rem; border-color:#ccc;" onclick="document.getElementById('cookie-banner').style.display='none'">Rechazar</button>
+        </div>
+    </div>
+
+    <dialog id="modal-aviso">
+        <div class="modal-content">
+            <button class="close-modal" onclick="cerrarModal('modal-aviso')">&times;</button>
+            <h3>Aviso Legal</h3>
+            <hr style="margin:1rem 0; border:0; border-top:1px solid #eee;">
+            <p><strong>Titular:</strong> [Nombre de tu Empresa o Autónomo]<br>
+            <strong>NIF/CIF:</strong> [Tu Número]<br>
+            <strong>Dirección:</strong> [Tu Dirección Fiscal]<br>
+            <strong>Email:</strong> hola@oleopuro.com</p>
+            <br>
+            <p><small>Este sitio web cumple con la normativa vigente de protección de datos (RGPD) y comercio electrónico (LSSI-CE).</small></p>
+        </div>
+    </dialog>
+
+    <dialog id="modal-privacidad">
+        <div class="modal-content">
+            <button class="close-modal" onclick="cerrarModal('modal-privacidad')">&times;</button>
+            <h3>Política de Privacidad</h3>
+            <p>En OleoPuro nos tomamos muy en serio tus datos. Solo recopilamos la información necesaria para procesar tu pedido a través de la pasarela segura de Stripe.</p>
+            <br>
+            <h4>Pagos Seguros</h4>
+            <p>No almacenamos datos de tarjetas de crédito. Todas las transacciones son procesadas externamente por Stripe con encriptación SSL de grado bancario.</p>
+        </div>
+    </dialog>
+    
+    <dialog id="modal-envios">
+        <div class="modal-content">
+            <button class="close-modal" onclick="cerrarModal('modal-envios')">&times;</button>
+            <h3>Política de Envíos</h3>
+            <p>Envíos a toda la península en 24/48 horas.</p>
+            <ul>
+                <li>Envío estándar: 5.00€</li>
+                <li>Gratis en pedidos superiores a 60€</li>
+            </ul>
+        </div>
+    </dialog>
+
+    <script>
+        // Lógica de Compra (Simulada)
+        function simularCompra(producto) {
+            // Aquí es donde iría la redirección real a Stripe:
+            // window.location.href = 'https://buy.stripe.com/TU_ENLACE_REAL';
+            
+            alert('🛍️ ESTO ES UNA DEMO\n\nEn la versión real, al hacer clic aquí, el usuario sería redirigido automáticamente a la pasarela de pago segura de Stripe para comprar: ' + producto);
+        }
+
+        // Lógica de Modales
+        function abrirModal(id) {
+            const modal = document.getElementById(id);
+            modal.showModal();
+        }
+
+        function cerrarModal(id) {
+            const modal = document.getElementById(id);
+            modal.close();
+        }
+
+        // Cerrar modal si se hace clic fuera
+        const dialogs = document.querySelectorAll('dialog');
+        dialogs.forEach(dialog => {
+            dialog.addEventListener('click', (e) => {
+                const dialogDimensions = dialog.getBoundingClientRect()
+                if (
+                e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom
+                ) {
+                dialog.close()
+                }
+            })
+        });
+    </script>
+</body>
+</html>
